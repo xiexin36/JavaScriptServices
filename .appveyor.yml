@@ -12,6 +12,7 @@ install:
    - ps: Add-Type -AssemblyName System.IO.Compression.FileSystem; [System.IO.Compression.ZipFile]::ExtractToDirectory($tempFileCurrent, $env:DOTNET_INSTALL_DIR)
    - ps: $env:Path = "$env:DOTNET_INSTALL_DIR;$env:Path"
 build_script:
+  - ps: .\build.ps1 /t:Pin
   - ps: Push-Location
   - cd templates/package-builder
   - npm install
